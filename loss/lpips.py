@@ -89,8 +89,8 @@ class LPIPS(nn.Module):
     def forward(self, input, target):
         # Notably, the LPIPS w/ pre-trained weights expect the input in the range of [-1, 1].
         # However, our codebase assumes all inputs are in range of [0, 1], and thus a scaling is needed.
-        input = input * 2. - 1.
-        target = target * 2. - 1.
+        # input = input * 2. - 1.
+        # target = target * 2. - 1.
         in0_input, in1_input = (self.scaling_layer(input), self.scaling_layer(target))
         outs0, outs1 = self.net(in0_input), self.net(in1_input)
         feats0, feats1, diffs = {}, {}, {}
